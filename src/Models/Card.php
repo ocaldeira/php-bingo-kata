@@ -4,6 +4,9 @@ namespace Models;
 
 class Card {
 
+    /**
+     * @var array $matrix 
+     */
     private $matrix;
 
     public function __construct($matrix)
@@ -11,10 +14,16 @@ class Card {
         $this->matrix = $matrix;
     }
 
+    /**
+     * Validate the card 
+     */
     public function isValid():bool{
         return $this->validSize() && $this->validNumbers();
     }
 
+    /**
+     * Validate the card size
+     */
     private function validSize():bool{
 
         foreach ($this->matrix as $row) {
@@ -27,6 +36,9 @@ class Card {
     }
 
 
+    /**
+     * Validate the card numbers
+     */
     private function validNumbers():bool{
         
         return $this->validateColumn("B",1,15) && 
@@ -37,6 +49,9 @@ class Card {
 
     }
 
+    /**
+     * Validate a column
+     */
     public function validateColumn($column,$low,$high){
 
         foreach($this->matrix[$column] as $cell){
