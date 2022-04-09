@@ -29,12 +29,24 @@ class Card {
 
     private function validNumbers():bool{
         
-        return $this->matrix['B']>=1 && $this->matrix['B']<=15 &&
-                $this->matrix['I']>=16 && $this->matrix['I']<=30 &&
-                $this->matrix['N']>=31 && $this->matrix['N']<=45 &&
-                $this->matrix['G']>=46 && $this->matrix['G']<=60 &&
-                $this->matrix['O']>=61 && $this->matrix['O']<=75;
+        return $this->validateColumn("B",1,15) && 
+        $this->validateColumn("I",16,30) && 
+        $this->validateColumn("N",31,45) && 
+        $this->validateColumn("G",46,60) && 
+        $this->validateColumn("O",61,75);
 
     }
+
+    public function validateColumn($column,$low,$high){
+
+        foreach($this->matrix[$column] as $cell){
+            if($cell < $low || $cell > $high){
+                return false;
+            }
+        }
+        return true;
+         
+    }
+
 
 }
