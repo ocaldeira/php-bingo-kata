@@ -17,14 +17,16 @@ class Card {
     /**
      * Validate the card 
      */
-    public function isValid():bool{
+    public function isValid():bool
+    {
         return $this->validSize() && $this->validNumbers();
     }
 
     /**
      * Validate the card size
      */
-    private function validSize():bool{
+    private function validSize():bool
+    {
 
         foreach ($this->matrix as $row) {
             if (sizeof($row) !== 5) {
@@ -39,28 +41,40 @@ class Card {
     /**
      * Validate the card numbers
      */
-    private function validNumbers():bool{
+    private function validNumbers():bool
+    {
         
         return $this->validateColumn("B",1,15) && 
         $this->validateColumn("I",16,30) && 
-        $this->validateColumn("N",31,45) && 
+        $this->validateColumn("N",31,45,true) && 
         $this->validateColumn("G",46,60) && 
         $this->validateColumn("O",61,75);
 
+        
     }
 
     /**
      * Validate a column
      */
-    public function validateColumn($column,$low,$high){
+    public function validateColumn($column,$low,$high,$hasNull=false)
+    {
 
         foreach($this->matrix[$column] as $cell){
+            if($hasNull && $cell === NULL){
+                continue;
+            }
+            
             if($cell < $low || $cell > $high){
                 return false;
             }
         }
         return true;
          
+    }
+
+    public function getCell($column,$row)
+    {
+        return  $this->matrix[$column][$row];
     }
 
 

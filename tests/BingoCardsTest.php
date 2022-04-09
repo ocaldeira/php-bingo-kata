@@ -17,4 +17,10 @@ class BingoCardsTest extends TestCase
          $this->assertTrue($card->isValid());
     } 
 
+    public function testCardHasFreeCell(){
+        $bingoCards = new BingoCards();
+         $card =  $bingoCards->generateCards();  
+         $this->assertNull($card->getCell('N',2));
+    }
+
 }

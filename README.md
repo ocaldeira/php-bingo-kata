@@ -17,13 +17,7 @@
                 * Generate a Bingo card
                 * Generated card has 25 unique spaces
 
-
-| Column |  Lower Bound |  Upper Bound | 
-| B | 1 | 15 | 
-| I | 16 | 30 | 
-| N | 31 | 45 | 
-| G | 46 | 60 | 
-| O | 61 | 75 | 
+ 
 
 
     *  Checking Bingo Cards

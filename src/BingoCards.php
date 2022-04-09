@@ -52,4 +52,6 @@ class BingoCards
         }
         return $columns;
     }
+
+    
 } 
