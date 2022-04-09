@@ -63,7 +63,7 @@ class Card {
             if($hasNull && $cell === NULL){
                 continue;
             }
-            
+
             if($cell < $low || $cell > $high){
                 return false;
             }
@@ -72,9 +72,26 @@ class Card {
          
     }
 
+    /**
+     * Get the numbers in the card cell
+     */
     public function getCell($column,$row)
     {
         return  $this->matrix[$column][$row];
+    }
+
+    /**
+     * Get the all the  numbers in the card
+     */
+
+    public function getNumbersInCard(){
+        return array_merge(
+            $this->matrix['B'],
+            $this->matrix['I'],
+            $this->matrix['N'],
+            $this->matrix['G'],
+            $this->matrix['O']
+        );
     }
 
 

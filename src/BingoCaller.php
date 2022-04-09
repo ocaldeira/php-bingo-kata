@@ -24,4 +24,12 @@ class BingoCaller
 
         return $number;
     }
+
+    /**
+     * Get the called number
+     */
+    public function getCalledNumber($number)
+    {
+        return in_array($number, $this->numbers);
+    }
 }
