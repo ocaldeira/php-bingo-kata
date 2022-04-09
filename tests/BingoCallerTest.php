@@ -8,7 +8,7 @@ class BingoCallerTest extends TestCase
     public function testWhenCallNumberInRange()
     {
         $bingoGame = new BingoCaller();
-        $calledNum = $this->assertTrue(is_int($bingoGame->callNumber()));
+        $calledNum =  $bingoGame->callNumber();
         $this->assertTrue($calledNum >= 1 && $calledNum <= 75);
     } 
 
@@ -17,9 +17,12 @@ class BingoCallerTest extends TestCase
         $calledNum = array();
         $expectedNum = range(1,75);
         for ($i=0; $i < 75; $i++) { 
-            $calledNumbers[] = $bingoGame->callNumber();
+            $calledNum[] = $bingoGame->callNumber();
         }
-        $this->assertEquals($expectedNum, $calledNumbers); 
+
+         sort($calledNum);
+       
+        $this->assertEquals($expectedNum, $calledNum); 
 
     }
 
